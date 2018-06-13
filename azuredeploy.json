@@ -60,18 +60,18 @@
         "description": "List of Chocolatey packages to install separated by a semi-colon eg. linqpad;sysinternals"
       }
     },
-    "setupChocolateyScriptFileName": {
+    "customSetupScriptName": {
       "type": "string",
-      "defaultValue": "SetupChocolatey.ps1",
+      "defaultValue": "InstallSolR.ps1",
       "metadata": {
         "description": "PowerShell script name to execute"
       }
     },
-    "setupChocolatelyScriptLocation": {
+    "customSetupScriptLocation": {
       "type": "string",
-      "defaultValue": "https://raw.githubusercontent.com/fredriktonn/azure-quickstart-templates/master/visual-studio-dev-vm-chocolatey/scripts/",
+      "defaultValue": "https://raw.githubusercontent.com/fredriktonn/azure-vm-solr/master/",
       "metadata": {
-        "description": "Public uri location of PowerShell Chocolately setup script"
+        "description": "Public uri location of solr setup script"
       }
     },
     "location": {
@@ -227,9 +227,9 @@
             "autoUpgradeMinorVersion": true,
             "settings": {
               "fileUris": [
-                "[concat(parameters('setupChocolatelyScriptLocation'),parameters('setupChocolateyScriptFileName'))]"
+                "[concat(parameters('customSetupScriptLocation'),parameters('customSetupScriptName'))]"
               ],
-              "commandToExecute": "[concat('powershell -ExecutionPolicy bypass -File ',parameters('setupChocolateyScriptFileName'),' -chocoPackages ',parameters('chocoPackages'))]"
+              "commandToExecute": "[concat('powershell -ExecutionPolicy bypass -File ',parameters('customSetupScriptName'))]"
             }
           }
         }
