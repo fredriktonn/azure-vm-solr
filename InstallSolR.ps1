@@ -16,6 +16,9 @@ $downloadFolder = "~\Downloads"
 New-Item "c:\install-log" -type Directory -force | Out-Null
 $LogFile = "c:\install-log\install.log"
 
+New-Item $solrRoot -type Directory -force | Out-Null
+New-Item $nssmRoot -type Directory -force | Out-Null
+
 "Changing ExecutionPolicy" | Out-File $LogFile -Append
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 
@@ -42,12 +45,12 @@ function downloadAndUnzipIfRequired
     {
         if(!(Test-Path -Path $toolZip))
         {
-            Write-Host "Downloading $toolName..."  | Out-File $LogFile -Append
-            Start-BitsTransfer -Source $toolSourceFile -Destination $toolZip
+            Write-Host "Downloading $toolName..."  
+            Start-BitsTransfer -Source $toolSourceFile -Destination $toolZip | Out-File $LogFile -Append
         }
 
-        Write-Host "Extracting $toolName to $toolFolder..."  | Out-File $LogFile -Append
-        Expand-Archive $toolZip -DestinationPath $installRoot
+        Write-Host "Extracting $toolName to $toolFolder..."  
+        Expand-Archive $toolZip -DestinationPath $installRoot | Out-File $LogFile -Append
     }
 }
 
