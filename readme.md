@@ -1,4 +1,4 @@
-## In a Powershell prompt run the following three commands tro try the template out
+## In a Powershell prompt run the following three commands
 
 ### Create a name that will be used for the resource group and name of the deployment
 ```
