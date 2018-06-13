@@ -1,0 +1,30 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "dnsLabelPrefix": {
+      "value": "solrtest10"
+    },
+    "storageType": {
+      "value": "Premium_LRS"
+    },
+    "vmName": {
+      "value": "SolRtest"
+    },
+    "vmAdminUserName": {
+      "value": "solr"
+    },
+    "vmAdminPassword": {
+      "value": "sitecore-SolR2018"
+    },
+    "vmSize": {
+      "value": "Standard_DS2"
+    },
+    "windowsOSVersion": {
+      "value": "2016-Datacenter"
+    },
+    "chocoPackages": {
+      "value": "solr"
+    }
+  }
+}
