@@ -41,7 +41,7 @@ $sb = { Set-ItemProperty -path HKLM:\Software\Microsoft\Windows\CurrentVersion\P
 Invoke-Command -ScriptBlock $sb -ComputerName $env:COMPUTERNAME -Credential $credential
 
 #"Install each Chocolatey Package"
-$command = "cd C:\ProgramData\chocolatey\bin;C:\ProgramData\chocolatey\bin\choco install solr --version 6.6.2 -y -force"
+$command = "cd C:\ProgramData\chocolatey\bin"
 $command | Out-File $LogFile -Append
 $sb = [scriptblock]::Create("$command")
 
@@ -55,7 +55,34 @@ catch
     $_.Exception | format-list -force | Out-File $LogFile -Append
 }
 
-$command = "cd C:\tools\solr-6.6.2\bin;solr start"
+$command = "choco install solr --version 6.6.2 -y -force"
+$command | Out-File $LogFile -Append
+$sb = [scriptblock]::Create("$command")
+
+# Use the current user profile
+try
+{
+    Invoke-Command -ScriptBlock $sb -ComputerName $env:COMPUTERNAME -Credential $credential | Out-Null
+}
+catch
+{
+    $_.Exception | format-list -force | Out-File $LogFile -Append
+}
+
+$command = "cd C:\tools\solr-6.6.2\bin"
+$command | Out-File $LogFile -Append
+$sb = [scriptblock]::Create("$command")
+
+try
+{
+    Invoke-Command -ScriptBlock $sb -ComputerName $env:COMPUTERNAME -Credential $credential | Out-Null
+}
+catch
+{
+    $_.Exception | format-list -force | Out-File $LogFile -Append
+}
+
+$command = "solr start"
 $command | Out-File $LogFile -Append
 $sb = [scriptblock]::Create("$command")
 

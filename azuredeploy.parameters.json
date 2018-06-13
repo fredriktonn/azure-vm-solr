@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "dnsLabelPrefix": {
-      "value": "solrtest10"
+      "value": "solrtest11"
     },
     "storageType": {
       "value": "Premium_LRS"
