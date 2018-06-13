@@ -21,12 +21,12 @@ Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 
 ## Verify elevated
 ## https://superuser.com/questions/749243/detect-if-powershell-is-running-as-administrator
-$elevated = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
-if($elevated -eq $false)
-{
-    "In order to install services, please run this script elevated." | Out-File $LogFile -Append
-    exit
-}
+## $elevated = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
+## if($elevated -eq $false)
+## {
+##    "In order to install services, please run this script elevated." | Out-File $LogFile -Append
+##    exit
+## }
 
 function downloadAndUnzipIfRequired
 {
