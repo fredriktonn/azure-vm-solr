@@ -1,7 +1,7 @@
 cls
 
 New-Item "c:\install-log" -type Directory -force | Out-Null
-$LogFile = "c:\install-log\JDScript.log"
+$LogFile = "c:\install-log\install.log"
 
 # Get username/password & machine name
 $userName = "artifactInstaller"
@@ -41,7 +41,7 @@ $sb = { Set-ItemProperty -path HKLM:\Software\Microsoft\Windows\CurrentVersion\P
 Invoke-Command -ScriptBlock $sb -ComputerName $env:COMPUTERNAME -Credential $credential
 
 #"Install each Chocolatey Package"
-$command = "C:\ProgramData\chocolatey\bin\choco install solr --version 6.6.2 -y -force"
+$command = "cd C:\ProgramData\chocolatey\bin;C:\ProgramData\chocolatey\bin\choco install solr --version 6.6.2 -y -force"
 $command | Out-File $LogFile -Append
 $sb = [scriptblock]::Create("$command")
 
