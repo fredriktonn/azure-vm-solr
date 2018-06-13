@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "dnsLabelPrefix": {
-      "value": "solrtest11"
+      "value": "solrtest12"
     },
     "storageType": {
       "value": "Premium_LRS"
@@ -22,9 +22,6 @@
     },
     "windowsOSVersion": {
       "value": "2016-Datacenter"
-    },
-    "chocoPackages": {
-      "value": "solr"
     }
   }
 }
