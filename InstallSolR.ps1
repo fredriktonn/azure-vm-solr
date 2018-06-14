@@ -19,7 +19,7 @@ Set-ItemProperty -path HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\
 #"Install each Chocolatey Package"
 Set-Location C:\ProgramData\chocolatey\bin | Out-File $LogFile -Append
 choco install solr --version 6.6.2 -y -force | Out-File $LogFile -Append
-choco install nssm | Out-File $LogFile -Append
+choco install nssm -y -force | Out-File $LogFile -Append
 
 Set-Location C:\tools\solr-6.6.2\bin | Out-File $LogFile -Append
 solr start | Out-File $LogFile -Append
